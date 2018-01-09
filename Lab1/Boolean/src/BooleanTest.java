@@ -40,7 +40,7 @@ public class BooleanTest {
 			}
 
 			/**
-			 * 
+			 * Exception thrown by compareTo method
 			 * @throws IllegalArgumentException
 			 *             - if other is null.
 			 */
@@ -49,7 +49,11 @@ public class BooleanTest {
 				lab.Boolean.TRUE.compareTo(null);
 			}
 			
-			
+			/**
+		         * Returns 0 if both booleans are of same value;
+			 * Returns a positive number if first object is true and second object is false;
+			 * Returns a negative number if first object is false and second object is true.
+			 */
 			@Test
 			public void compareTo() {
 				try {
