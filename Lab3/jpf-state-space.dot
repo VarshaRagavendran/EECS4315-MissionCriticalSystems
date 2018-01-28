@@ -1,0 +1,5 @@
+digraph jpf_state_space {
+/* searchAdvanced(0, Thd0:HelloWorld.java:3, false) */
+  st0 [label="0",shape=egg,color=green];
+/* searchBacktracked(gov.nasa.jpf.listener.StateSpaceDot$StateInformation@67205a84) */
+}

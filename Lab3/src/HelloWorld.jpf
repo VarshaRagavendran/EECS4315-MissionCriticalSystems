@@ -1,0 +1,3 @@
+target=HelloWorld
+classpath=/Users/Varsha/Desktop/eclipse-workspace/Lab3/bin
+listener=gov.nasa.jpf.listener.StateSpaceDot
