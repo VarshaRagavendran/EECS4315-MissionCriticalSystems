@@ -1,6 +1,8 @@
 package listener;
 
 import gov.nasa.jpf.ListenerAdapter;
+import gov.nasa.jpf.jvm.bytecode.ArrayLoadInstruction;
+import gov.nasa.jpf.jvm.bytecode.ArrayStoreInstruction;
 import gov.nasa.jpf.search.Search;
 import gov.nasa.jpf.vm.Instruction;
 import gov.nasa.jpf.vm.MethodInfo;
@@ -19,22 +21,33 @@ public class ArrayListener extends ListenerAdapter {
 
 	// To keep count of # of reads and writes
 	private int counter = 0;
+	// To verify if the method invoking the instruction is the "main" method
+	private boolean isMainMethod = false;
 
 	/**
 	 * Implements methodEntered method form VMListener to listen to main method
-	 * call. Checks Instructions executed in bytecode level for reads/writes.
+	 * call.
 	 */
 	public void methodEntered(VM vm, ThreadInfo currentThread, MethodInfo enteredMethod) {
-		if (enteredMethod.getName().equals("main")) {
-			for (Instruction i : enteredMethod.getInstructions()) {
-				// iaload - Retrieves an entry from a int array and places it on the stack.
-				// iastore - Takes an int from the stack and stores it in an array of ints.
-				if (i.getMnemonic().equals("iastore") || i.getMnemonic().equals("iaload"))
-					this.counter++;
+		System.out.println(enteredMethod.getName());
+		if (enteredMethod.getName().equals("main") ) {
+			isMainMethod = true;
+		}
+	}
+	
+	/**
+	 * Implements executeInstruction method from VMListener to listen to the instructions executed
+	 * at byte code level. If these instructions are of type ArrayLoadInstruction or ArrayStoreInstruction class,
+	 * they are considered to be a read and/or write.
+	 */
+	public void executeInstruction(VM vm, ThreadInfo currentThread, Instruction instructionToExecute) {
+		if(isMainMethod) {
+			if(instructionToExecute instanceof ArrayLoadInstruction || instructionToExecute instanceof ArrayStoreInstruction) {
+				this.counter++;
 			}
 		}
 	}
-
+	
 	/**
 	 * Implements searchFinished method from SearchListener to listen to when the
 	 * state is finished. Prints to console the # of read/write instructions
