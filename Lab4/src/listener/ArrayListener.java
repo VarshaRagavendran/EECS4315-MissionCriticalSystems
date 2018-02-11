@@ -20,9 +20,16 @@ import gov.nasa.jpf.vm.VM;
 public class ArrayListener extends ListenerAdapter {
 
 	// To keep count of # of reads and writes
-	private int counter = 0;
+	private int counter;
 	// To verify if the method invoking the instruction is the "main" method
-	private boolean isMainMethod = false;
+	private boolean isMainMethod;
+	
+	//Constructor
+	public ArrayListener(){
+		//initialization of attributes
+		this.counter = 0;
+		this.isMainMethod = false;
+	}
 
 	/**
 	 * Implements methodEntered method form VMListener to listen to main method
