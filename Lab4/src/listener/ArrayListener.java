@@ -24,11 +24,17 @@ public class ArrayListener extends ListenerAdapter {
 	// To verify if the method invoking the instruction is the "main" method
 	private boolean isMainMethod;
 	
+<<<<<<< HEAD
 	/**
 	 * Constructor
 	 * Initializes private attributes
 	 */
 	public ArrayListener() {
+=======
+	//Constructor
+	public ArrayListener(){
+		//initialization of attributes
+>>>>>>> origin/master
 		this.counter = 0;
 		this.isMainMethod = false;
 	}
