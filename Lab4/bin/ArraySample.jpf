@@ -1,4 +1,4 @@
 target=main.ArraySample
 classpath=/Users/Varsha/Desktop/eclipse-workspace/Lab4/bin
-native_classpath=/Users/Varsha/Desktop/eclipse-workspace/Lab4/bin
+native_classpath=/Users/Varsha/Desktop/eclipse-workspace/Lab4/bin/
 listener=listener.ArrayListener
