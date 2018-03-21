@@ -1,0 +1,3 @@
+target=Main
+classpath=/Users/Varsha/Desktop/eclipse-workspace/Lab7/bin;/Users/Varsha/Desktop/eclipse-workspace/pop.jar
+#listener=gov.nasa.jpf.listener.EndlessLoopDetector
